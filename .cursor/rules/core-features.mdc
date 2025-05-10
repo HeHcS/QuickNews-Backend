@@ -1,0 +1,121 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Core features for the QuickNews MVP
+globs: 
+---
+
+QuickNews is a short-form video content app similar in functionality to TikTok and Instagram Reels.
+
+# Core Features
+
+## 1. User Authentication
+
+### Technical Implementation:
+- JWT Authentication: Implement JSON Web Token authentication using packages like jsonwebtoken for secure session management.
+- OAuth Integration: Use Passport.js for social authentication with Google and Apple. Express.js middleware handles authentication routes.
+- Password Security: Utilize bcrypt for password hashing and implement secure password reset flows.
+
+Challenges: Securing refresh token rotation, managing session expiration, and implementing rate limiting.
+
+---
+
+## 2. Vertical Video Feed
+
+### Technical Implementation:
+- Video Streaming: Use Express.js to handle video streaming with Node.js 'stream' module. Implement range requests for efficient video delivery.
+- Feed API: Create RESTful endpoints using Express.js to fetch and paginate video feed data. Use MongoDB aggregation for filtered feeds.
+- Category System: Implement category routes in Express.js with MongoDB queries for filtered content. Use Redis caching for frequently accessed categories.
+- Bookmark System: Create MongoDB schema for bookmarks with user references. Implement Express.js routes for bookmark CRUD operations.
+
+Challenges: Managing video streaming performance and implementing efficient caching strategies.
+
+---
+
+## 3. Creator Features
+
+### Technical Implementation:
+- Video Upload: Use Multer middleware for handling multipart form data. Implement chunks upload for large files with Express.js.
+- Article Management: Create Express.js routes for article CRUD operations. Use MongoDB with Mongoose for article schema and storage.
+- Analytics System: Implement MongoDB aggregation pipelines for analytics data. Use Socket.io for real-time analytics updates.
+
+Challenges: Handling large file uploads efficiently and implementing real-time analytics processing.
+
+---
+
+## 4. Full Article Feature
+
+### Technical Implementation:
+- Article Tab: Create a dedicated screen for articles. Use a WebView or custom HTML renderer to display formatted articles.
+- Linked Articles: Store article metadata (e.g., video ID) in Firestore and link articles to videos.
+- AI Assistant: Integrate an AI API (e.g., OpenAI GPT) for the AI assistant. Use a floating action button (FAB) to trigger the AI dialog. Store user queries and AI responses in Firestore.
+
+Challenges: Ensuring the AI assistant provides accurate and relevant responses.
+
+---
+
+## 5. Media Consumption Analytics
+
+### Technical Implementation:
+- User Insights Dashboard: Use Express.js routes with MongoDB aggregation for analytics. Implement Chart.js for data visualization on the frontend.
+- Personalized Recommendations: Create recommendation engine using Node.js with MongoDB queries and Redis caching for faster content delivery.
+
+Challenges: Optimizing database queries for real-time analytics.
+
+---
+
+## 6. Engagement Features
+
+### Technical Implementation:
+- Like, Share, and Comment: Implement Express.js routes with MongoDB for social features. Use Socket.io for real-time updates.
+- Push Notifications: Integrate Node.js notifications using web-push library. Set up Express routes for subscription management.
+- Search and Filter: Implement Elasticsearch with Node.js for advanced search capabilities.
+
+Challenges: Managing WebSocket connections for real-time features.
+
+---
+
+## 7. Admin and Moderation Tools
+
+### Technical Implementation:
+- Content Moderation: Build Express.js admin API with JWT authentication. Use MongoDB for storing moderation actions.
+- Creator Approval: Create secure admin routes in Express.js with role-based access control (RBAC).
+
+Challenges: Implementing secure role-based authentication and authorization.
+
+## 8. Performance and Scalability
+
+### Technical Implementation:
+- Fast Loading Times: Optimize queries and use caching where possible. Compress videos before upload.
+- Cross-Platform Support: Test the app on both iOS and Android devices.
+
+Challenges: Balancing performance with feature richness.
+
+---
+
+## 9. User and Creator Profiles
+
+### Technical Implementation:
+- User Profiles: Create MongoDB schema for user profiles with Mongoose. Use Express.js routes for profile CRUD operations. Implement Multer middleware for profile image uploads to S3/cloud storage.
+- Creator Profiles: Extend user schema for creator-specific fields. Add Express.js middleware for creator verification and badge management.
+- Follow System: Implement MongoDB relationships for followers/following. Use Express.js routes with aggregation pipelines for feed generation.
+
+Challenges: Optimizing database queries for large follower networks.
+
+---
+
+## 10. Search and Discovery
+
+### Technical Implementation:
+- Advanced Search: Integrate Elasticsearch with Node.js for full-text search capabilities. Use Express.js routes for search API endpoints.
+- Filters: Implement MongoDB aggregation pipelines for filtered queries. Add Redis caching for frequently accessed filters.
+- Discovery Feed: Create Node.js service for recommendation engine using MongoDB aggregation. Implement Express.js routes for personalized feed delivery.
+
+Challenges: Managing Elasticsearch indexing and search performance at scale.
+
+
+
+---
