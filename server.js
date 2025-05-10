@@ -52,6 +52,7 @@ app.use(passport.initialize());
 
 // Environment variables
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const MONGODB_URI = process.env.MONGODB_URI;
 const TEST_MODE = process.env.TEST_MODE === 'true';
@@ -154,8 +155,8 @@ const startServer = async () => {
   // Initialize Redis
   await initRedis();
   
-  const server = app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT} in ${NODE_ENV} mode`);
+  const server = app.listen(PORT, HOST, () => {
+    console.log(`Server running on ${HOST}:${PORT} in ${NODE_ENV} mode`);
     console.log(`MongoDB status: ${mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'}`);
     console.log(`Test mode: ${TEST_MODE ? 'enabled' : 'disabled'}`);
   });
