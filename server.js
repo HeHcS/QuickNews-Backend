@@ -32,10 +32,11 @@ const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 
 // CORS Configuration
 const corsOptions = {
-  origin: [FRONTEND_URL],
+  origin: FRONTEND_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Range'],
+  credentials: true,
+  exposedHeaders: ['Content-Range', 'X-Content-Range', 'Accept-Ranges', 'Content-Length', 'Content-Type']
 };
 
 app.use(cors(corsOptions));
@@ -165,7 +166,9 @@ const startServer = async () => {
   io = new Server(server, {
     cors: {
       origin: FRONTEND_URL,
-      methods: ['GET', 'POST']
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Range'],
+      credentials: true
     }
   });
 

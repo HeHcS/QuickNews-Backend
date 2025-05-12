@@ -15,9 +15,9 @@ const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 
 // CORS Configuration
 const corsOptions = {
-    origin: [FRONTEND_URL], // Use environment variable for frontend URL
+    origin: FRONTEND_URL, // Use environment variable for frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Range'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Range', 'Accept'],
     credentials: true, // Enable credentials (cookies, authorization headers)
     exposedHeaders: ['Content-Range', 'X-Content-Range', 'Accept-Ranges', 'Content-Length', 'Content-Type'] // Expose headers needed for video streaming
 };
