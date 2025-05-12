@@ -88,9 +88,6 @@ const connectDB = async () => {
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Serve static files from public directory
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Socket.IO middleware
 const attachSocketIO = (req, res, next) => {
   req.io = io;
